@@ -1,0 +1,5 @@
+package com.mindtree.hospital.VO;
+
+public class Doctor {
+
+}

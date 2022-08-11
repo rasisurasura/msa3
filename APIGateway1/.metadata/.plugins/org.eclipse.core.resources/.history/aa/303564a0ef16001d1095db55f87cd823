@@ -1,0 +1,59 @@
+package com.mindtree.hospital.VO;
+public class Doctor {
+		private long id;
+		private String name;
+		private double salary;
+		private String gender;
+		private int age;
+		private long hosp_id;
+		
+		public long getId() {
+			return id;
+		}
+		public void setId(long id) {
+			this.id = id;
+		}
+		public String getName() {
+			return name;
+		}
+		public void setName(String name) {
+			this.name = name;
+		}
+		public int getAge() {
+			return age;
+		}
+		public void setAge(int age) {
+			this.age = age;
+		}
+		public double getSalary() {
+			return salary;
+		}
+		public void setSalary(double salary) {
+			this.salary = salary;
+		}
+		public String getGender() {
+			return gender;
+		}
+		public void setGender(String gender) {
+			this.gender = gender;
+		}
+		public long getHosp_id() {
+			return hosp_id;
+		}
+		public void setHosp_id(long hosp_id) {
+			this.hosp_id = hosp_id;
+		}
+
+		public Doctor(String name, double salary, String gender, int age, long hosp_id) {
+			super();
+			this.name = name;
+			this.salary = salary;
+			this.gender = gender;
+			this.age = age;
+			this.hosp_id = hosp_id;
+		}
+		public Doctor() {
+			super();
+		}
+}
+

@@ -1,0 +1,18 @@
+package com.mindtree.hospital.service;
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+
+import com.mindtree.hospital.VO.RequestTemplate;
+import com.mindtree.hospital.entity.Hospital;
+
+@Service
+public interface HospitalService {
+	Hospital add(Hospital dept);
+	List<Hospital> list();
+	Hospital update(long id,String name);
+	Hospital searchById(long id);
+	List<RequestTemplate> listWithDoc();
+	RequestTemplate specificDocHospital(long hosp_id);
+}
+

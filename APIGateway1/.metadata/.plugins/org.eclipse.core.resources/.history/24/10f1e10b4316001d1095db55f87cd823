@@ -1,0 +1,5 @@
+package com.mindtree.hospital.controller;
+
+public class HospitalController {
+
+}

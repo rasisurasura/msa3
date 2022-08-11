@@ -1,0 +1,5 @@
+package com.mindtree.college.obj;
+
+public interface CollegeRepository {
+
+}

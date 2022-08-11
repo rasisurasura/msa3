@@ -1,0 +1,56 @@
+package com.mindtree.hospital.controller;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.mindtree.hospital.VO.RequestTemplate;
+import com.mindtree.hospital.entity.Hospital;
+import com.mindtree.hospital.service.HospitalService;
+
+@RestController
+@RequestMapping("/hospital")
+public class HospitalController {
+	
+	@Autowired
+	HospitalService hospService;
+	
+	@PostMapping
+	public Hospital add(@RequestBody Hospital hosp)
+	{
+		return hospService.add(hosp);
+	}
+	
+	@GetMapping
+	public List<Hospital> list()
+	{
+		return hospService.list();
+	}
+	
+	@GetMapping("/{id}")
+	public Hospital searchById(@PathVariable long id)
+	{
+		return hospService.searchById(id);
+	}
+	
+	@GetMapping("/all-hospital-doctor")
+	public List<RequestTemplate> listWithDoc()
+	{
+		return hospService.listWithDoc();
+	}
+	
+	@GetMapping("/hospital-with-doctor/{hosp_id}")
+	public RequestTemplate specificHospDoc(@PathVariable long hosp_id)
+	{
+		return hospService.specificHospDoctor(hosp_id);
+	}
+	
+	
+}
+
+

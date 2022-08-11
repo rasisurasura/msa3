@@ -1,0 +1,47 @@
+package com.mindtree.hospital.VO;
+import java.util.ArrayList;
+import java.util.List;
+
+import com.mindtree.hospital.entity.Hospital;
+
+public class RequestTemplate {
+
+	private Hospital hospital;
+	private List<Doctor> doctorList = new ArrayList<Doctor>();
+	
+	
+	public RequestTemplate(Hospital hospital, List<Hospital> hospitalList) {
+		super();
+		this.hospital = hospital;
+		this.hospitalList = hospitalList;
+	}
+
+
+	public Hospital getHospital() {
+		return hospital;
+	}
+
+
+	public void setHospital(Hospital hospital) {
+		this.hospital = hospital;
+	}
+
+
+	public List<Doctor> getDoctorList() {
+		return doctorList;
+	}
+
+
+	public void setDoctorList(List<Doctor>doctorList) {
+		this.doctorList = doctorList;
+	}
+
+
+	public RequestTemplate() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	
+	
+}
+

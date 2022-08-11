@@ -1,0 +1,39 @@
+package com.mindtree.student.obj;
+
+
+public class College {
+
+	private long id;
+	private String name;
+	private int totalstudents;
+	
+		public long getId() {
+		return id;
+	}
+	public void setId(long id) {
+		this.id = id;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public int getTotalstudents() {
+		return totalstudents;
+	}
+	public void setTotalstudents(int totalstudents) {
+		this.totalstudents = totalstudents;
+	}
+		public College(long id,String name, int totalstudents) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.totalstudents = totalstudents;
+	}
+	public College() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+}
+

@@ -1,0 +1,76 @@
+package com.mindtree.doctor.implementation;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import org.springframework.web.client.RestTemplate;
+
+import com.mindtree.doctor.VO.Hospital;
+import com.mindtree.doctor.VO.ResponseTemplate;
+import com.mindtree.doctor.entity.Doctor;
+import com.mindtree.doctor.repository.DoctorRepository;
+import com.mindtree.doctor.service.DoctorService;
+
+
+@Component
+public class DoctorImpl implements DoctorService {
+
+	@Autowired
+	private DoctorRepository docRepo;
+	
+	@Autowired
+	private RestTemplate restTemplate;
+	
+	@Override
+	public Doctor add(Doctor doc) {
+		return docRepo.save(doc);
+	}
+
+	@Override
+	public List<Doctor> list() {
+		return docRepo.findAll();
+	}
+
+	@Override
+	public Doctor searchById(long id) {
+		return docRepo.findById(id);
+	}
+
+	@Override
+	public ResponseTemplate docWithHosp(long docId) {
+		ResponseTemplate RT = new ResponseTemplate();
+		Doctor doc = docRepo.findById(docId);
+		
+		long hosp_id = doc.getHosp_id();
+		Hospital hosp = restTemplate.getForObject("http://HOSPITAL-SERVICE/hospital/"+hosp_id, Hospital.class);
+		RT.setHospital(hosp);
+		RT.setDoctor(doc);
+		return RT;
+	}
+
+	@Override
+	public Doctor assignHospital(long docId, long hospId) {
+		Doctor doc = docRepo.findById(docId);
+		Hospital hosp = restTemplate.getForObject("http://HOSPITAL-SERVICE/hospital/"+hospId, Hospital.class);
+		if(doc==null || hosp==null)
+		{
+			return null;
+		}
+		doc.setHosp_id(hospId);
+		docRepo.save(doc);
+		return doc;
+	}
+
+	@Override
+	public List<Doctor> getByHospId(long hosp_id) {
+		return docRepo.getByHospId(hosp_id);
+	}
+
+	@Override
+	public List<Doctor> getDoctorByHospitalWithDescAge(long hosp_id) {
+		return docRepo.getDoctorByHospitalWithDescAge(hosp_id);
+	}
+	
+
+}
+

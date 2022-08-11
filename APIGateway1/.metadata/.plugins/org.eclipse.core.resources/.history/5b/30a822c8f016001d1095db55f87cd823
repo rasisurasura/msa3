@@ -1,0 +1,38 @@
+package com.mindtree.doctor.VO;
+
+public class Hospital {
+
+	private long id;
+	private String name;
+	private int location;
+	public long getId() {
+		return id;
+	}
+	public void setId(long id) {
+		this.id = id;
+	}
+	public String getName() {
+		return name;
+	}
+	public int getLocation() {
+		return location;
+	}
+	public void setLocation(int location) {
+		this.location = location;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+	public Hospital(long id,String name, int location) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.location = location;
+	}
+	public Hospital() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+}
+

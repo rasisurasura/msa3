@@ -1,0 +1,64 @@
+package com.mindtree.doctor.controller;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.mindtree.doctor.VO.ResponseTemplate;
+import com.mindtree.doctor.entity.Doctor;
+import com.mindtree.doctor.service.DoctorService;
+
+@RestController
+@RequestMapping("/doctor")
+public class DoctorController {
+	
+	@Autowired
+	DoctorService empService;
+	
+	@PostMapping
+	public Doctor add(@RequestBody Doctor emp)
+	{
+		return docService.add(emp);
+	}
+	
+	@GetMapping
+	public List<Doctor> listDoc(){
+		return docService.list();
+	}
+	
+	@GetMapping("/{docId}")
+	public ResponseTemplate docWithHosp(@PathVariable long docId)
+	{
+		return docService.docWithHosp(docId);
+	}
+	
+	@PutMapping("/{docId}/{hospId}")
+	public String updateHospital(@PathVariable long docId,@PathVariable long hospId)
+	{
+		Doctor doc = docService.assignHospital(docId,hospId);
+		if(doc!=null)
+		{
+			return doc.toString();
+		}
+		return "Sorry. Hopsital or Doctor Not Found";
+	}
+	
+	@GetMapping("/doctor-with-ascname/{hosp_id}")
+	public List<Doctor> getByHospId(@PathVariable long hosp_id)
+	{
+		return docService.getByHospId(hosp_id);
+	}
+	
+	@GetMapping("/doctor-with-desc-age/{hosp_id}")
+	public List<Doctor> getDoctorHospitalWithDescAge(@PathVariable long hosp_id)
+	{
+		return docService.getDoctorByDepartmentWithDescAge(hosp_id);
+	}
+}
+
